@@ -46,6 +46,7 @@
             <button id="addTaskBtn" class="btn btn--primary">📝 加Task</button>
             <button id="wasteTimeBtn" class="btn btn--secondary">💸 浪費時間</button>
             <button id="showSummaryBtn" class="btn btn--outline">📊 今日總結</button>
+            <button id="shareProgressBtn" class="btn btn--outline">🔗 分享進度</button>
         </div>
 
         <!-- Today's Progress -->
@@ -72,11 +73,45 @@
             人生苦短，你仲唔做嘢？
         </div>
 
+        <!-- Task Filtering Controls -->
+        <div class="filter-section">
+            <label for="filterCategory">任務類型: </label>
+            <select id="filterCategory">
+                <option value="">全部</option>
+                <option value="Study">學習</option>
+                <option value="Exercise">運動</option>
+                <option value="Reading">閱讀</option>
+                <option value="Skill Learning">技能學習</option>
+                <option value="Other">其他</option>
+            </select>
+            <label for="filterImportance">重要程度: </label>
+            <select id="filterImportance">
+                <option value="">全部</option>
+                <option value="Low">低</option>
+                <option value="Medium">中</option>
+                <option value="High">高</option>
+            </select>
+            <label for="filterStatus">狀態: </label>
+            <select id="filterStatus">
+                <option value="">全部</option>
+                <option value="completed">已完成</option>
+                <option value="pending">未完成</option>
+            </select>
+        </div>
+
         <!-- Tasks List -->
         <div class="tasks-section">
             <h3>今日任務</h3>
             <div id="tasksList" class="tasks-list">
                 <!-- Tasks will be populated here -->
+            </div>
+        </div>
+
+        <!-- Gamification Section -->
+        <div class="gamification-section">
+            <h3>🏆 成就徽章</h3>
+            <div id="badgesList">
+                <!-- List of badges/achievements will be rendered here -->
             </div>
         </div>
     </div>
@@ -111,6 +146,14 @@
                 <label for="taskDescription" class="form-label">任務描述</label>
                 <textarea id="taskDescription" class="form-control" rows="3" placeholder="詳細說明..."></textarea>
             </div>
+            <div class="form-group">
+                <label for="customReward" class="form-label">自訂獎勵金額</label>
+                <input type="number" id="customReward" class="form-control" placeholder="例如：500" min="0">
+            </div>
+            <div class="form-group">
+                <label for="customPenaltyTask" class="form-label">自訂罰款金額</label>
+                <input type="number" id="customPenaltyTask" class="form-control" placeholder="例如：100" min="0">
+            </div>
             <div class="modal-actions">
                 <button id="cancelTask" class="btn btn--outline">取消</button>
                 <button id="saveTask" class="btn btn--primary">儲存任務</button>
@@ -142,35 +185,28 @@
         </div>
     </div>
 
+    <!-- Statistics & History Modal -->
+    <div id="historyModal" class="modal hidden">
+        <div class="modal-content">
+            <h3>📈 歷史統計</h3>
+            <canvas id="progressChart"></canvas>
+            <div id="trendSummary"></div>
+            <button id="closeHistory" class="btn btn--primary btn--full-width">關閉</button>
+        </div>
+    </div>
+
     <!-- Daily Summary Modal -->
     <div id="summaryModal" class="modal hidden">
         <div class="modal-content">
             <h3>📊 今日總結</h3>
             <div class="summary-stats">
-                <div class="summary-item">
-                    <span>完成任務：</span>
-                    <span id="summaryTasksCount">0</span>
-                </div>
-                <div class="summary-item">
-                    <span>總賺取：</span>
-                    <span class="stat-positive">$<span id="summaryEarned">0</span></span>
-                </div>
-                <div class="summary-item">
-                    <span>總浪費：</span>
-                    <span class="stat-negative">-$<span id="summaryWasted">0</span></span>
-                </div>
-                <div class="summary-item">
-                    <span>自動扣款：</span>
-                    <span class="stat-negative">-$<span id="summaryAutoDeduct">0</span></span>
-                </div>
-                <div class="summary-item summary-net">
-                    <span>淨變化：</span>
-                    <span id="summaryNet">$0</span>
-                </div>
+                <div class="summary-item"><span>完成任務：</span><span id="summaryTasksCount">0</span></div>
+                <div class="summary-item"><span>總賺取：</span><span class="stat-positive">$<span id="summaryEarned">0</span></span></div>
+                <div class="summary-item"><span>總浪費：</span><span class="stat-negative">-$<span id="summaryWasted">0</span></span></div>
+                <div class="summary-item"><span>自動扣款：</span><span class="stat-negative">-$<span id="summaryAutoDeduct">0</span></span></div>
+                <div class="summary-item summary-net"><span>淨變化：</span><span id="summaryNet">$0</span></div>
             </div>
-            <div class="summary-message" id="summaryMessage">
-                你今日表現一般般啦
-            </div>
+            <div class="summary-message" id="summaryMessage">你今日表現一般般啦</div>
             <button id="closeSummary" class="btn btn--primary btn--full-width">知道啦</button>
         </div>
     </div>
@@ -179,6 +215,12 @@
     <div id="notification" class="notification hidden">
         <span id="notificationText"></span>
     </div>
+
+    <!-- Footer -->
+    <footer class="app-footer">
+        <div class="footer-content">&copy; 2025 Acry. All rights reserved.</div>
+        <button id="toggleDarkMode" class="btn btn--outline">🌙 Dark Mode</button>
+    </footer>
 
     <script src="app.js"></script>
 </body>
