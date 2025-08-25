@@ -263,6 +263,50 @@
   --color-info-rgb: var(--color-gray-300-rgb);
 }
 
+.app-footer {
+    width: 100%;
+    text-align: center;
+    padding: 16px 0;
+    background: #f5f5f5;
+    color: #333;
+    font-size: 14px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 10;
+    border-top: 1px solid #e0e0e0;
+}
+
+/* mobile-friendly */
+@media (max-width: 600px) {
+    body, .container, .modal-content, .app-footer {
+        font-size: 15px;
+        padding: 8px;
+    }
+    .btn {
+        font-size: 15px;
+        padding: 10px;
+    }
+    .app-footer {padding: 12px 0;}
+}
+
+/* dark mode爆燈 */
+body.dark-mode {
+    background: #181818;
+    color: #eee;
+}
+body.dark-mode .app-footer {
+    background: #222;
+    color: #eee;
+    border-top: 1px solid #444;
+}
+body.dark-mode .container,
+body.dark-mode .modal-content {
+    background: #222;
+    color: #eee;
+}
+
+
 [data-color-scheme="light"] {
   /* RGB versions for opacity control (light mode) */
   --color-brown-600-rgb: 94, 82, 64;
