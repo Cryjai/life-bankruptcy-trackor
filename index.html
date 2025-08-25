@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>人生破產追蹤器 💀</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Initial Setup Modal -->
+    <div id="setupModal" class="modal">
+        <div class="modal-content">
+            <h2>💀 歡迎來到人生破產追蹤器</h2>
+            <p>時間就係金錢，而你嘅時間正在倒數中...</p>
+            <div class="form-group">
+                <label for="birthDate" class="form-label">請輸入你嘅出生日期：</label>
+                <input type="date" id="birthDate" class="form-control" required>
+            </div>
+            <button id="startApp" class="btn btn--primary btn--full-width">開始人生倒數</button>
+        </div>
+    </div>
+
+    <!-- Main App -->
+    <div id="mainApp" class="container hidden">
+        <!-- Header -->
+        <header class="app-header">
+            <h1>💀 人生破產追蹤器</h1>
+            <div class="user-info">
+                <span id="userAge"></span>歲 | <span id="userDaysLeft"></span>日剩餘
+            </div>
+        </header>
+
+        <!-- Money Counter -->
+        <div class="money-section">
+            <div class="money-counter">
+                <div class="money-amount">
+                    $<span id="currentMoney">0</span>
+                </div>
+                <div class="money-status" id="moneyStatus">正在燒銀紙中...</div>
+                <div class="time-warning" id="timeWarning"></div>
+            </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="quick-actions">
+            <button id="addTaskBtn" class="btn btn--primary">📝 加Task</button>
+            <button id="wasteTimeBtn" class="btn btn--secondary">💸 浪費時間</button>
+            <button id="showSummaryBtn" class="btn btn--outline">📊 今日總結</button>
+        </div>
+
+        <!-- Today's Progress -->
+        <div class="progress-section">
+            <h3>今日進度</h3>
+            <div class="progress-stats">
+                <div class="stat">
+                    <span class="stat-label">完成任務</span>
+                    <span class="stat-value" id="tasksCompleted">0</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">賺取金額</span>
+                    <span class="stat-value stat-positive">$<span id="todayEarned">0</span></span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">浪費金額</span>
+                    <span class="stat-value stat-negative">-$<span id="todayWasted">0</span></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Motivational Message -->
+        <div class="message-box" id="motivationalMessage">
+            人生苦短，你仲唔做嘢？
+        </div>
+
+        <!-- Tasks List -->
+        <div class="tasks-section">
+            <h3>今日任務</h3>
+            <div id="tasksList" class="tasks-list">
+                <!-- Tasks will be populated here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Task Modal -->
+    <div id="addTaskModal" class="modal hidden">
+        <div class="modal-content">
+            <h3>加新任務</h3>
+            <div class="form-group">
+                <label for="taskTitle" class="form-label">任務標題</label>
+                <input type="text" id="taskTitle" class="form-control" placeholder="例如：溫習數學">
+            </div>
+            <div class="form-group">
+                <label for="taskCategory" class="form-label">任務類型</label>
+                <select id="taskCategory" class="form-control">
+                    <option value="Study">學習</option>
+                    <option value="Exercise">運動</option>
+                    <option value="Reading">閱讀</option>
+                    <option value="Skill Learning">技能學習</option>
+                    <option value="Other">其他</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="taskImportance" class="form-label">重要程度</label>
+                <select id="taskImportance" class="form-control">
+                    <option value="Low">低 (+$75)</option>
+                    <option value="Medium">中 (+$225)</option>
+                    <option value="High">高 (+$750)</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="taskDescription" class="form-label">任務描述</label>
+                <textarea id="taskDescription" class="form-control" rows="3" placeholder="詳細說明..."></textarea>
+            </div>
+            <div class="modal-actions">
+                <button id="cancelTask" class="btn btn--outline">取消</button>
+                <button id="saveTask" class="btn btn--primary">儲存任務</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Waste Time Modal -->
+    <div id="wasteTimeModal" class="modal hidden">
+        <div class="modal-content">
+            <h3>💸 浪費時間記錄</h3>
+            <p>選擇你又點樣浪費人生：</p>
+            <div class="waste-buttons">
+                <button class="btn btn--secondary waste-btn" data-activity="看八卦" data-penalty="200">看八卦 (-$200)</button>
+                <button class="btn btn--secondary waste-btn" data-activity="刷抖音" data-penalty="300">刷抖音 (-$300)</button>
+                <button class="btn btn--secondary waste-btn" data-activity="發呆" data-penalty="150">發呆 (-$150)</button>
+                <button class="btn btn--secondary waste-btn" data-activity="看無用片" data-penalty="250">看無用片 (-$250)</button>
+                <button class="btn btn--secondary waste-btn" data-activity="打機" data-penalty="400">打機 (-$400)</button>
+            </div>
+            <div class="form-group">
+                <label for="customWaste" class="form-label">自訂浪費行為</label>
+                <input type="text" id="customWaste" class="form-control" placeholder="例如：睇無謂影片">
+                <input type="number" id="customPenalty" class="form-control mt-8" placeholder="罰款金額" min="50" max="1000">
+            </div>
+            <div class="modal-actions">
+                <button id="cancelWaste" class="btn btn--outline">取消</button>
+                <button id="customWasteBtn" class="btn btn--secondary">記錄自訂浪費</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Daily Summary Modal -->
+    <div id="summaryModal" class="modal hidden">
+        <div class="modal-content">
+            <h3>📊 今日總結</h3>
+            <div class="summary-stats">
+                <div class="summary-item">
+                    <span>完成任務：</span>
+                    <span id="summaryTasksCount">0</span>
+                </div>
+                <div class="summary-item">
+                    <span>總賺取：</span>
+                    <span class="stat-positive">$<span id="summaryEarned">0</span></span>
+                </div>
+                <div class="summary-item">
+                    <span>總浪費：</span>
+                    <span class="stat-negative">-$<span id="summaryWasted">0</span></span>
+                </div>
+                <div class="summary-item">
+                    <span>自動扣款：</span>
+                    <span class="stat-negative">-$<span id="summaryAutoDeduct">0</span></span>
+                </div>
+                <div class="summary-item summary-net">
+                    <span>淨變化：</span>
+                    <span id="summaryNet">$0</span>
+                </div>
+            </div>
+            <div class="summary-message" id="summaryMessage">
+                你今日表現一般般啦
+            </div>
+            <button id="closeSummary" class="btn btn--primary btn--full-width">知道啦</button>
+        </div>
+    </div>
+
+    <!-- Notification -->
+    <div id="notification" class="notification hidden">
+        <span id="notificationText"></span>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
