@@ -8,16 +8,16 @@
 </head>
 <body>
     <!-- Initial Setup Modal -->
-    <div id="setupModal" class="modal">
-        <div class="modal-content">
+    <div id="setupModal" class="modal" role="dialog" aria-modal="true">
+        <form class="modal-content">
             <h2>💀 歡迎來到人生破產追蹤器</h2>
             <p>時間就係金錢，而你嘅時間正在倒數中...</p>
             <div class="form-group">
                 <label for="birthDate" class="form-label">請輸入你嘅出生日期：</label>
                 <input type="date" id="birthDate" class="form-control" required>
             </div>
-            <button id="startApp" class="btn btn--primary btn--full-width">開始人生倒數</button>
-        </div>
+            <button id="startApp" class="btn btn--primary btn--full-width" type="submit">開始人生倒數</button>
+        </form>
     </div>
 
     <!-- Main App -->
@@ -117,27 +117,27 @@
     </div>
 
     <!-- Add Task Modal -->
-    <div id="addTaskModal" class="modal hidden">
-        <div class="modal-content">
+    <div id="addTaskModal" class="modal hidden" role="dialog" aria-modal="true">
+        <form class="modal-content">
             <h3>加新任務</h3>
             <div class="form-group">
                 <label for="taskTitle" class="form-label">任務標題</label>
-                <input type="text" id="taskTitle" class="form-control" placeholder="例如：溫習數學">
+                <input type="text" id="taskTitle" class="form-control" placeholder="例如：溫習數學" required>
             </div>
             <div class="form-group">
                 <label for="taskCategory" class="form-label">任務類型</label>
-                <select id="taskCategory" class="form-control">
+                <select id="taskCategory" class="form-control" required>
                     <option value="Study">學習</option>
                     <option value="Exercise">運動</option>
                     <option value="Reading">睇書</option>
-                    <option value="Reading">操卷</option>
+                    <option value="Practice">操卷</option>
                     <option value="Skill Learning">技能學習</option>
                     <option value="Other">其他</option>
                 </select>
             </div>
             <div class="form-group">
                 <label for="taskImportance" class="form-label">重要程度</label>
-                <select id="taskImportance" class="form-control">
+                <select id="taskImportance" class="form-control" required>
                     <option value="Low">低 (+$275)</option>
                     <option value="Medium">中 (+$1225)</option>
                     <option value="High">高 (+$3750)</option>
@@ -156,38 +156,38 @@
                 <input type="number" id="customPenaltyTask" class="form-control" placeholder="例如：100" min="0">
             </div>
             <div class="modal-actions">
-                <button id="cancelTask" class="btn btn--outline">取消</button>
-                <button id="saveTask" class="btn btn--primary">儲存任務</button>
+                <button id="cancelTask" class="btn btn--outline" type="button">取消</button>
+                <button id="saveTask" class="btn btn--primary" type="submit">儲存任務</button>
             </div>
-        </div>
+        </form>
     </div>
 
     <!-- Waste Time Modal -->
-    <div id="wasteTimeModal" class="modal hidden">
-        <div class="modal-content">
+    <div id="wasteTimeModal" class="modal hidden" role="dialog" aria-modal="true">
+        <form class="modal-content">
             <h3>💸 浪費時間記錄</h3>
             <p>選擇你又點樣浪費人生：</p>
             <div class="waste-buttons">
-                <button class="btn btn--secondary waste-btn" data-activity="看八卦" data-penalty="2000">看八卦 (-$2000)</button>
-                <button class="btn btn--secondary waste-btn" data-activity="loop-reels" data-penalty="3000">loop reels (-$3000)</button>
-                <button class="btn btn--secondary waste-btn" data-activity="沉船" data-penalty="150">溝仔 (-$150)</button>
-                <button class="btn btn--secondary waste-btn" data-activity="看無用片睇靚仔" data-penalty="900">看無用片睇靚仔 (-$900)</button>
-                <button class="btn btn--secondary waste-btn" data-activity="睇蠟筆小新" data-penalty="1200">睇蠟筆小新 (-$1200)</button>
+                <button class="btn btn--secondary waste-btn" data-activity="看八卦" data-penalty="2000" type="button">看八卦 (-$2000)</button>
+                <button class="btn btn--secondary waste-btn" data-activity="loop-reels" data-penalty="3000" type="button">loop reels (-$3000)</button>
+                <button class="btn btn--secondary waste-btn" data-activity="沉船" data-penalty="150" type="button">溝仔 (-$150)</button>
+                <button class="btn btn--secondary waste-btn" data-activity="看無用片睇靚仔" data-penalty="900" type="button">看無用片睇靚仔 (-$900)</button>
+                <button class="btn btn--secondary waste-btn" data-activity="睇蠟筆小新" data-penalty="1200" type="button">睇蠟筆小新 (-$1200)</button>
             </div>
             <div class="form-group">
                 <label for="customWaste" class="form-label">自訂浪費行為</label>
                 <input type="text" id="customWaste" class="form-control" placeholder="例如：睇無謂影片">
-                <input type="number" id="customPenalty" class="form-control mt-8" placeholder="罰款金額" min="50" max="1000">
+                <input type="number" id="customPenalty" class="form-control mt-8" placeholder="罰款金額" min="50" max="3000">
             </div>
             <div class="modal-actions">
-                <button id="cancelWaste" class="btn btn--outline">取消</button>
-                <button id="customWasteBtn" class="btn btn--secondary">記錄自訂浪費</button>
+                <button id="cancelWaste" class="btn btn--outline" type="button">取消</button>
+                <button id="customWasteBtn" class="btn btn--secondary" type="submit">記錄自訂浪費</button>
             </div>
-        </div>
+        </form>
     </div> 
 
     <!-- Statistics & History Modal -->
-    <div id="historyModal" class="modal hidden">
+    <div id="historyModal" class="modal hidden" role="dialog" aria-modal="true">
         <div class="modal-content">
             <h3>📈 歷史統計</h3>
             <canvas id="progressChart"></canvas>
@@ -197,7 +197,7 @@
     </div>
 
     <!-- Daily Summary Modal -->
-    <div id="summaryModal" class="modal hidden">
+    <div id="summaryModal" class="modal hidden" role="dialog" aria-modal="true">
         <div class="modal-content">
             <h3>📊 今日總結</h3>
             <div class="summary-stats">
