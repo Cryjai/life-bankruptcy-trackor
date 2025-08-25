@@ -622,6 +622,14 @@ document.addEventListener('visibilitychange', () => {
             }
         }
     }
+    document.getElementById('shareProgressBtn').addEventListener('click', () => {
+    const summary = '我今日完成了X個任務，賺取$Y，浪費$Z！#人生破產追蹤器';
+    if (navigator.share) {
+        navigator.share({ title: '今日進度', text: summary });
+    } else {
+        alert('你的瀏覽器不支援分享功能');
+    }
+});
     
     // Save current time when leaving
     if (document.hidden) {
