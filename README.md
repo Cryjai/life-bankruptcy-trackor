@@ -33,7 +33,7 @@
 ## 👽 安裝方法
 
 1. fork / clone 呢個repo
-2. 開browser直接用（手機／電腦／老餅機支援）
+2. 開browser直接用（手機／電腦／老餅機支援）https://cryjai.github.io/life-bankruptcy-trackor/
 3. 【冇得hea】入完生日就ready，準備面對現實毒打！
 
 ---
