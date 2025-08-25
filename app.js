@@ -10,11 +10,11 @@ class LifeBankruptcyTracker {
                 "High": { reward: 750, color: "#F44336" }
             },
             timeWasteActivities: [
-                { name: "看八卦", penalty: 300 },
-                { name: "睇reels", penalty: 600 },
+                { name: "看八卦", penalty: 2000 },
+                { name: "睇reels", penalty: 3000 },
                 { name: "沉船男神女神", penalty: 150 },
                 { name: "看無用片", penalty: 900 },
-                { name: "打機", penalty: 400 }
+                { name: "睇蠟筆小新", penalty: 1200 }
             ],
             sarcasticMessages: {
                 moneyDecreasing: [
