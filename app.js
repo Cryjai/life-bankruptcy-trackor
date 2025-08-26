@@ -5,9 +5,9 @@ class LifeBankruptcyTracker {
         this.appData = {
             taskCategories: ["Study", "Exercise", "Reading", "Skill Learning", "Other"],
             importanceLevels: {
-                "Low": { reward: 75, color: "#4CAF50" },
-                "Medium": { reward: 225, color: "#FF9800" },
-                "High": { reward: 750, color: "#F44336" }
+                "Low": { reward: 275, color: "#4CAF50" },
+                "Medium": { reward: 1225, color: "#FF9800" },
+                "High": { reward: 3750, color: "#F44336" }
             },
             timeWasteActivities: [
                 { name: "看八卦", penalty: 2000 },
@@ -33,7 +33,7 @@ class LifeBankruptcyTracker {
                     "仲有幾多錢俾你浪費？"
                 ],
                 dailySummary: {
-                    positive: "恭喜你今日冇完全浪費人生",
+                    positive: "恭喜你今日冇完全浪費人生，繼續努力啦",
                     negative: "你今日又成功浪費人生，繼續落去就破產啦",
                     veryNegative: "你咁樣法落去，三個月就破產，不如去做乞丐算啦"
                 }
@@ -142,7 +142,7 @@ class LifeBankruptcyTracker {
         });
         document.getElementById('shareProgressBtn')?.addEventListener('click', () => {
             const stats = this.userData.todayStats;
-            const summary = `我今日完成了${stats.tasksCompleted}個任務，賺取$${stats.earned}，浪費$${stats.wasted}！#人生破產追蹤器`;
+            const summary = `我今日完成了${stats.tasksCompleted}個任務，賺取$${stats.earned}，浪費$${stats.wasted}！#人生破產追蹤器byAcry`;
             if (navigator.share) {
                 navigator.share({ title: '今日進度', text: summary });
             } else {
