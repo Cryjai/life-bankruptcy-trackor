@@ -142,7 +142,7 @@ class LifeBankruptcyTracker {
         });
         document.getElementById('shareProgressBtn')?.addEventListener('click', () => {
             const stats = this.userData.todayStats;
-            const summary = `我今日完成了${stats.tasksCompleted}個任務，賺取$${stats.earned}，浪費$${stats.wasted}！#人生破產追蹤器byAcry`;
+            const summary = `我今日完成了${stats.tasksCompleted}個任務，賺取$${stats.earned}，浪費$${stats.wasted}！#人生破產追蹤器byAcry 大家一齊嚟試下人生破產追蹤器 https://cryjai.github.io/life-bankruptcy-trackor/`;
             if (navigator.share) {
                 navigator.share({ title: '今日進度', text: summary });
             } else {
