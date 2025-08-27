@@ -14,7 +14,7 @@
   入生日，app計你仲有幾多命（即係幾多錢可以燒）。愈後生愈多資本，愈老愈窮，唔使扮型！
 
 - **自動燒銀紙：**  
-  唔login都扣錢，坐喺度hea都死，生存壓力大到爆炸。
+  唔login都扣錢，坐喺度hea都死，生存壓力大到爆炸。（唔好諗住你唔自爆就唔會扣錢 Time is money😾
 
 - **毒打八卦位：**  
   睇八卦片、刷IG、蠟筆小新全部一click即扣double，無得扮嘢！
@@ -26,15 +26,15 @@
   每日都有毒舌summary，今日浪費咗幾多命即刻彈出嚟，做得好就話你「冇完全廢曬」，做唔好就直接叫你「唔做嘢不如返屋企喊」。
 
 - **全本地儲存：**  
-  用`localStorage`記錄你慘況，唔使怕數據俾人偷，只怕自己唔努力。
+  用`localStorage`記錄你慘況，唔使怕數據俾人偷，只怕自己唔努力。(Yesss我先唔會攞你任何data😾😾唔信你睇返我code😾😾)
 
 ---
 
 ## 👽 安裝方法
 
-1. fork / clone 呢個repo
-2. 開browser直接用（手機／電腦／老餅機支援）https://cryjai.github.io/life-bankruptcy-trackor/
-3. 【冇得hea】入完生日就ready，準備面對現實毒打！
+1. fork / clone 呢個repo 自己加野落去
+或者開browser直接用（手機／電腦／老餅機支援）https://cryjai.github.io/life-bankruptcy-trackor/
+2. 【冇得hea】入完生日就ready，準備面對現實毒打！
 
 ---
 
