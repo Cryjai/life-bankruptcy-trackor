@@ -30,15 +30,14 @@
 
 ---
 
-## 👽 安裝方法
+## 👽 使用方法
 
-1. fork / clone 呢個repo 自己加野落去
-或者開browser直接用（手機／電腦／老餅機支援）https://cryjai.github.io/life-bankruptcy-trackor/
+1. 開browser直接用（手機／電腦／老餅機支援）https://cryjai.github.io/life-bankruptcy-trackor/
 2. 【冇得hea】入完生日就ready，準備面對現實毒打！
 
 ---
 
-## 🐍 梗圖毒舌精選
+## 🐍 毒舌精選
 
 >「人生苦短，你仲唔做嘢？」  
 >「你個錢燒緊，快啲做task啦」  
