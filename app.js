@@ -23,7 +23,7 @@ class LifeBankruptcyTracker {
                     "時間就係金錢，你明唔明？",
                     "努力唔代表有成果，但唔努力一定廢到飛起。",
                     "連自己都唔欣賞自己，仲想人欣賞你？",
-                    "App係你毒打自己嘅最後機會，再廢就連App都唔想serve你"
+                    "App係你毒打自己嘅最後機會，再廢就連App都唔想serve你",
                     "庸人自擾？你係庸人，仲擾到我！"
                 ],
                 taskCompleted: [
