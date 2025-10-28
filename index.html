@@ -7,10 +7,43 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container" id="mainApp">
+  <!-- FRONT / LANDING (restored roast-y front page) -->
+  <div id="frontPage" class="container">
+    <header class="app-header">
+      <h1>💀 人生破產追蹤器 — 時間就是金錢</h1>
+      <div class="user-info">用 localStorage 記錄你嘅慘況 — 唔會上傳，淨係毒打你自己。</div>
+    </header>
+
+    <section class="hero">
+      <p class="lead">
+        一開即入地獄模式：入返你生日，App 會計算你仲有幾多「人生資本」。
+        自動每分鐘扣 $1，浪費時間即係燒錢 — 睇八卦、刷 Reels 都係直接扣你錢。
+      </p>
+      <ul>
+        <li>時間 = 金錢；唔做嘢就等於蝕錢</li>
+        <li>毒舌提醒，夾硬做嘢先至可以賺返</li>
+        <li>支援番茄鐘專注模式（可關閉）</li>
+      </ul>
+      <div style="margin-top:16px;">
+        <button id="startApp" class="btn btn--primary" type="button">開始用 (入生日)</button>
+        <button id="viewRepo" class="btn btn--outline" type="button" onclick="window.open('https://github.com/Cryjai/life-bankruptcy-trackor','_blank')">原作者 Repo</button>
+      </div>
+
+      <hr style="margin:20px 0;">
+      <div class="toxic-quotes">
+        <h4>毒舌精選</h4>
+        <blockquote>「人生苦短，你仲唔做嘢？」</blockquote>
+        <blockquote>「你個錢燒緊，快啲做task啦」</blockquote>
+        <blockquote>「又睇八卦？你條命值錢過八卦咩？」</blockquote>
+      </div>
+    </section>
+  </div>
+
+  <!-- MAIN APP (hidden until setup completed) -->
+  <div id="mainApp" class="container hidden">
     <header class="app-header">
       <h1>💀 人生破產追蹤器</h1>
-      <div class="user-info">記錄你今日嘅生理與金錢狀態</div>
+      <div class="user-info">時間就係錢，你仲等緊乜？</div>
     </header>
 
     <div class="quick-actions">
@@ -43,9 +76,28 @@
     <!-- tasks -->
     <div id="tasksList" class="tasks-list"></div>
 
+    <!-- Setup Modal (entered from frontPage) -->
+    <div id="setupModal" class="modal hidden" role="dialog" aria-modal="true" aria-label="Setup modal">
+      <div class="modal-content" role="document">
+        <h3>設定你嘅人生資本</h3>
+        <div class="form-group">
+          <label for="nameInput">暱稱 (可選)</label>
+          <input id="nameInput" class="form-control" placeholder="例如：阿嘉">
+        </div>
+        <div class="form-group">
+          <label for="birthInput">出生日期</label>
+          <input id="birthInput" class="form-control" type="date" required>
+        </div>
+        <div class="modal-actions">
+          <button id="saveSetup" class="btn btn--primary" type="button">儲存並開始</button>
+          <button id="cancelSetup" class="btn btn--outline" type="button">取消</button>
+        </div>
+      </div>
+    </div>
+
     <!-- Add Task Modal -->
     <div id="addTaskModal" class="modal hidden" role="dialog" aria-modal="true">
-      <form class="modal-content" onsubmit="return false;">
+      <div class="modal-content">
         <h3>加新任務</h3>
         <div class="form-group">
           <label for="taskTitle" class="form-label">任務標題</label>
@@ -81,7 +133,7 @@
           <button id="saveTask" class="btn btn--primary" type="button">儲存</button>
           <button id="cancelTask" class="btn btn--outline" type="button">取消</button>
         </div>
-      </form>
+      </div>
     </div>
 
     <!-- Waste modal -->
@@ -116,9 +168,10 @@
       </div>
     </div>
 
-    <!-- Pomodoro modal -->
+    <!-- Pomodoro modal (closeable) -->
     <div id="pomodoroModal" class="modal hidden" role="dialog" aria-modal="true">
-      <div class="modal-content">
+      <div class="modal-content" role="document" aria-label="Pomodoro timer">
+        <button id="closePomodoro" class="btn btn--outline" style="float:right; padding:6px 8px;" aria-label="Close pomodoro" type="button">✕</button>
         <h3>番茄鐘</h3>
         <div class="form-row">
           <label>工作（分鐘）</label>
@@ -138,7 +191,7 @@
     </div>
 
     <!-- Notification -->
-    <div id="notification" class="notification hidden">
+    <div id="notification" class="notification hidden" role="status">
       <span id="notificationText"></span>
     </div>
 
